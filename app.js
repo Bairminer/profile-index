@@ -55,16 +55,27 @@ document.addEventListener("DOMContentLoaded", () => {
   // 2. Theme Management (Atom One Dark Pro / Atom One Light)
   // --------------------------------------------------------------------------
   function initTheme() {
+    document.documentElement.setAttribute("data-theme", currentTheme);
     body.setAttribute("data-theme", currentTheme);
     updateThemeIcon();
+    updateThemeColorMeta();
   }
 
   function toggleTheme() {
     currentTheme = currentTheme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", currentTheme);
     body.setAttribute("data-theme", currentTheme);
     localStorage.setItem("theme", currentTheme);
     updateThemeIcon();
+    updateThemeColorMeta();
     showToast(`Switched to Atom One ${currentTheme === "dark" ? "Dark Pro Darker" : "Light"} theme`);
+  }
+
+  function updateThemeColorMeta() {
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute("content", currentTheme === "dark" ? "#121418" : "#e8eaef");
+    }
   }
 
   function updateThemeIcon() {

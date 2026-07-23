@@ -77,7 +77,7 @@
 }
 
 /* Light Theme Variables Override (High Contrast White Boxes) */
-body[data-theme="light"] {
+[data-theme="light"] {
   --atom-bg-darker: #e8eaef;
   --atom-bg-panel: #ffffff;
   --atom-bg-card: #ffffff;
@@ -115,25 +115,38 @@ body[data-theme="light"] {
   -webkit-tap-highlight-color: transparent;
 }
 
+html {
+  background-color: var(--atom-bg-darker);
+  background: var(--bg-gradient-dark);
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease infinite;
+  min-height: 100%;
+  min-height: 100dvh;
+  -webkit-text-size-adjust: 100%;
+  transition: background 0.5s ease;
+}
+
+html[data-theme="light"] {
+  background: var(--bg-gradient-light);
+  background-size: 200% 200%;
+}
+
 body {
   font-family: var(--font-family);
   color: var(--atom-fg-main);
-  min-height: 100vh;
+  min-height: 100%;
+  min-height: 100dvh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 24px 16px 60px 16px;
+  padding-top: calc(24px + env(safe-area-inset-top, 0px));
+  padding-right: calc(16px + env(safe-area-inset-right, 0px));
+  padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+  padding-left: calc(16px + env(safe-area-inset-left, 0px));
   overflow-x: hidden;
-  background: var(--bg-gradient-dark);
-  background-size: 200% 200%;
-  animation: gradientShift 20s ease infinite;
-  transition: background 0.5s ease, color 0.3s ease;
-}
-
-body[data-theme="light"] {
-  background: var(--bg-gradient-light);
-  background-size: 200% 200%;
+  background: transparent;
+  transition: color 0.3s ease;
 }
 
 @keyframes gradientShift {
@@ -927,7 +940,7 @@ body[data-theme="light"] {
 /* Toast Snackbar */
 .snackbar {
   position: fixed;
-  bottom: 24px;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
   left: 50%;
   transform: translateX(-50%) translateY(100px);
   background: var(--atom-bg-card-hover);
@@ -961,7 +974,10 @@ body[data-theme="light"] {
 
 @media (max-width: 580px) {
   body {
-    padding: 14px 10px 40px 10px;
+    padding-top: calc(14px + env(safe-area-inset-top, 0px));
+    padding-right: calc(10px + env(safe-area-inset-right, 0px));
+    padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
+    padding-left: calc(10px + env(safe-area-inset-left, 0px));
   }
   
   /* Top Bar Mobile Optimization (No Overlap & Centered Badge) */
