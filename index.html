@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Meta Tags -->
+  <title>Bairminer's Profile</title>
+  <meta name="description" content="Explore Bairminer's official links, gaming profiles, music tracks, Steam showcase, and social media channels styled in Atom One Dark theme." />
+  <meta name="theme-color" content="#1b1d23" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Bairminer's Profile" />
+  <meta property="og:description" content="Official links, social media channels, music, and Steam profile for Bairminer." />
+  <meta property="og:image" content="assets/images/profile.png" />
+
+  <!-- Favicon (Bairminer Profile Icon) -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2" />
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v=2" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=2" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=27" />
+</head>
+<body data-theme="dark">
+
+  <div class="app-container">
+    
+    <!-- Top Navigation Action Bar -->
+    <header class="top-bar">
+      <!-- Left: macOS Window Controls -->
+      <div class="mac-controls">
+        <button id="macCloseBtn" class="mac-btn mac-close" title="Close Mode (Show Profile Only)"></button>
+        <button id="macMinimizeBtn" class="mac-btn mac-minimize" title="Minimize Mode (Show Profile, Quote & Song)"></button>
+        <button id="macMaximizeBtn" class="mac-btn mac-maximize" title="Maximize Mode (Show Everything)"></button>
+      </div>
+
+      <!-- Center: Centered Brand Tag -->
+      <a href="https://bairminer.com" target="_blank" rel="noopener noreferrer" class="brand-badge" title="Visit bairminer.com">
+        <span>Bairminer://Profile</span>
+      </a>
+      
+      <!-- Right: Actions -->
+      <div class="top-bar-actions">
+        <!-- Share Button -->
+        <button id="shareBtn" class="md-button-icon" title="Share Profile">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+        </button>
+
+        <!-- Dark/Light Theme Toggle Button -->
+        <button id="themeToggleBtn" class="md-button-icon" title="Toggle Theme & Gradient">
+          <svg id="themeIcon" class="svg-icon" viewBox="0 0 24 24">
+            <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C12.92 3.04 12.46 3 12 3z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Profile Header Card (Horizontal Stack & Hover Steam Showcase Popover) -->
+    <section class="profile-card">
+      <div class="avatar-wrapper" title="Click or hover to view Steam Showcase">
+        <img id="avatarImg" class="avatar-img" src="assets/images/profile.png" alt="Bairminer Avatar" />
+
+        <!-- Steam Popover Card (Appears on Hovering Avatar) -->
+        <div class="steam-popover">
+          <div class="steam-popover-header">
+            <div class="steam-title" style="color: #ffffff !important; font-size: 1.15rem !important; font-weight: 700 !important;">
+              <span class="icon-mask" style="background-color: #ffffff; -webkit-mask: url('assets/icons/steam.svg') no-repeat center / contain; mask: url('assets/icons/steam.svg') no-repeat center / contain; width: 20px; height: 20px; display: inline-block;"></span>
+              <span style="color: #ffffff !important; font-size: 1.15rem !important; font-weight: 700 !important;">Steam Showcase</span>
+            </div>
+            <a href="https://steamcommunity.com/id/bairminer/" target="_blank" rel="noopener noreferrer" class="md-button-icon open-steam-btn" title="Open Steam Profile">
+              <svg class="svg-icon" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+            </a>
+          </div>
+          <iframe
+            id="steamEmbed"
+            src="https://gamer2810.github.io/steam-miniprofile/?accountId=76561198122784472&appId=427520&interactive=true&vanityId=bairminer&centered=true"
+            title="Steam Mini-Profile"
+            height="320"
+            scrolling="no"
+            loading="lazy"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Profile Info Middle Stack -->
+      <div class="profile-info-stack">
+        <h1 id="profileName" class="profile-name">Bairminer</h1>
+        <p id="profileDesc" class="profile-desc">taking over the world</p>
+      </div>
+
+      <!-- Vertically Centered Handle Tag on the Right -->
+      <div class="handle-tag-wrapper">
+        <span id="profileHandle" class="profile-handle">@bairminer</span>
+      </div>
+    </section>
+
+    <!-- Quote Generator Widget -->
+    <section class="quote-card">
+      <div class="quote-header">
+        <div class="quote-header-left">
+          <div class="quote-icon-box" title="Featured Quote">
+            <svg class="svg-icon quote-icon" viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+          </div>
+          <div class="quote-info">
+            <div class="quote-title">Featured Quote</div>
+            <div id="quoteCounter" class="quote-counter">Quote 1 of 10</div>
+          </div>
+        </div>
+        <div class="quote-actions">
+          <button id="prevQuoteBtn" class="md-button-icon" style="width:34px; height:34px;" title="Previous Quote">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+          </button>
+          <button id="nextQuoteBtn" class="md-button-icon" style="width:34px; height:34px;" title="Next Quote">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+          </button>
+          <button id="shuffleQuoteBtn" class="md-button-icon" style="width:34px; height:34px;" title="Random Quote">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.45 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+          </button>
+          <button id="copyQuoteBtn" class="md-button-icon" style="width:34px; height:34px;" title="Copy Quote">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+      <p id="quoteText" class="quote-text">"Some people, I'd fight the world for."</p>
+    </section>
+
+    <!-- Music Player Card (Full Horizontal Dimensions) -->
+    <section id="playerCard" class="player-card is-playing">
+      <div class="player-main">
+        <div class="album-art" title="Vinyl Record">
+          <svg class="svg-icon" style="width:38px; height:38px;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/></svg>
+        </div>
+        
+        <div class="track-info">
+          <div id="trackTitle" class="track-title">Featured Tracks</div>
+          <div id="trackArtist" class="track-artist">Track 1 of 6</div>
+        </div>
+
+        <div class="player-controls">
+          <button id="prevSongBtn" class="md-button-icon" style="width:38px; height:38px;" title="Previous Track">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+          </button>
+
+          <button id="nextSongBtn" class="md-button-icon" style="width:38px; height:38px;" title="Next Track">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+          </button>
+
+          <button id="shuffleSongBtn" class="md-button-icon" style="width:38px; height:38px;" title="Random Track">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.45 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Spotify Embedded Iframe -->
+      <div id="embedWrapper" class="embed-container">
+        <iframe id="spotifyEmbed" src="" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- Links Controls & Section Header -->
+    <div class="links-section-header">
+      <h2 class="section-title">Social & Profiles</h2>
+      <div class="search-input-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search links..." />
+      </div>
+    </div>
+
+    <!-- Animated Link Cards Grid -->
+    <main id="linksContainer" class="links-container">
+      <!-- Links rendered dynamically via JS -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-card">
+      <div class="footer-symbol">△ ☽ α</div>
+    </footer>
+
+  </div>
+
+  <!-- Toast -->
+  <div id="snackbar" class="snackbar">
+    <svg class="svg-icon" style="color:var(--atom-green);" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+    <span id="snackbarMsg">Action completed</span>
+  </div>
+
+  <!-- JavaScript Scripts -->
+  <script src="data.js?v=19"></script>
+  <script src="app.js?v=19"></script>
+
+</body>
+</html>

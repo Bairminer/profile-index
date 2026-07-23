@@ -1,0 +1,1158 @@
+/* ==========================================================================
+   Atom One Dark Pro Theme - Stylesheet
+   ========================================================================== */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400..700;1,400..700&family=Outfit:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Atom One Dark Pro Darker IDE Theme Tokens (Enhanced Contrast) */
+  --atom-bg-darker: #121418;
+  --atom-bg-panel: #242831;
+  --atom-bg-card: #242831;
+  --atom-bg-card-hover: #2c313c;
+  --atom-bg-gutter: #16181f;
+
+  /* Atom Syntax Palette */
+  --atom-blue: #61afef;
+  --atom-purple: #c678dd;
+  --atom-cyan: #56b6c2;
+  --atom-green: #98c379;
+  --atom-yellow: #e5c07b;
+  --atom-orange: #d19a66;
+  --atom-red: #e06c75;
+  --atom-dark-red: #be5046;
+
+  /* Atom Text & Borders */
+  --atom-fg-main: #abb2bf;
+  --atom-fg-bright: #ffffff;
+  --atom-fg-muted: #6b7280;
+  --atom-border: #3b404d;
+  --atom-border-bright: #4b5263;
+
+  /* Active Color System Mapping */
+  --md-primary: var(--atom-blue);
+  --md-on-primary: #121418;
+  --md-primary-container: rgba(97, 175, 239, 0.18);
+  --md-on-primary-container: var(--atom-blue);
+
+  --md-secondary-container: rgba(198, 120, 221, 0.18);
+  --md-on-secondary-container: var(--atom-purple);
+
+  --md-surface: var(--atom-bg-panel);
+  --md-surface-variant: var(--atom-bg-card-hover);
+  --md-on-surface: var(--atom-fg-bright);
+  --md-on-surface-variant: var(--atom-fg-main);
+  --md-outline: var(--atom-border);
+
+  --glass-border: var(--atom-border);
+  --spotlight-glow: rgba(97, 175, 239, 0.18);
+
+  /* Shadows - High Contrast Dark Mode */
+  --md-elevation-1: 0px 3px 8px rgba(0, 0, 0, 0.4);
+  --md-elevation-2: 0px 6px 20px rgba(0, 0, 0, 0.55);
+  --md-elevation-3: 0px 12px 32px rgba(0, 0, 0, 0.7);
+
+  /* Typography */
+  --font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-code: 'Fira Code', monospace;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+
+  /* Atom One Dark Pro Darker Dual Gradients - Deep Background */
+  --bg-gradient-dark: radial-gradient(at 0% 0%, #1a1d24 0px, transparent 50%),
+                      radial-gradient(at 100% 0%, #101216 0px, transparent 50%),
+                      radial-gradient(at 100% 100%, #20242d 0px, transparent 50%),
+                      radial-gradient(at 0% 100%, #14161b 0px, transparent 50%),
+                      linear-gradient(135deg, #121418 0%, #171920 100%);
+
+  /* Atom One Light Mode Alternative - Richer Contrast Background */
+  --bg-gradient-light: radial-gradient(at 0% 0%, #dcdfe6 0px, transparent 50%),
+                       radial-gradient(at 100% 0%, #d0d4de 0px, transparent 50%),
+                       radial-gradient(at 100% 100%, #e4e7ef 0px, transparent 50%),
+                       linear-gradient(135deg, #e8eaef 0%, #d4d8e2 100%);
+}
+
+/* Light Theme Variables Override (High Contrast White Boxes) */
+body[data-theme="light"] {
+  --atom-bg-darker: #e8eaef;
+  --atom-bg-panel: #ffffff;
+  --atom-bg-card: #ffffff;
+  --atom-bg-card-hover: #f4f6fa;
+  --atom-fg-main: #282a32;
+  --atom-fg-bright: #0f1117;
+  --atom-fg-muted: #656873;
+  --atom-border: #bdc1cc;
+  --atom-border-bright: #9ea3b0;
+
+  --md-primary: #3872e0;
+  --md-on-primary: #ffffff;
+  --md-primary-container: rgba(56, 114, 224, 0.15);
+  --md-on-primary-container: #3872e0;
+
+  --md-surface: #ffffff;
+  --md-surface-variant: #f4f6fa;
+  --md-on-surface: #0f1117;
+  --md-on-surface-variant: #282a32;
+  --md-outline: #bdc1cc;
+
+  --glass-border: #bdc1cc;
+  --spotlight-glow: rgba(56, 114, 224, 0.15);
+
+  --md-elevation-1: 0px 3px 8px rgba(15, 17, 23, 0.08);
+  --md-elevation-2: 0px 6px 18px rgba(15, 17, 23, 0.12);
+  --md-elevation-3: 0px 10px 30px rgba(15, 17, 23, 0.18);
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--atom-fg-main);
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 16px 60px 16px;
+  overflow-x: hidden;
+  background: var(--bg-gradient-dark);
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease infinite;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+body[data-theme="light"] {
+  background: var(--bg-gradient-light);
+  background-size: 200% 200%;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* App Container */
+/* App Container View Modes & Transitions */
+.app-container {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+  transition: max-width 0.35s cubic-bezier(0.2, 0, 0, 1), opacity 0.3s ease;
+}
+
+/* Close Mode: Show Profile Card Only */
+.app-container.view-close-profile .quote-card,
+.app-container.view-close-profile .player-card,
+.app-container.view-close-profile .links-section-header,
+.app-container.view-close-profile .links-container,
+.app-container.view-close-profile .footer-card {
+  display: none !important;
+}
+
+/* Minimize Mode: Show Profile Card, Quote & Song Player Only */
+.app-container.view-minimize-widgets .links-section-header,
+.app-container.view-minimize-widgets .links-container,
+.app-container.view-minimize-widgets .footer-card {
+  display: none !important;
+}
+
+/* Top Navigation Bar (3-Column Grid for Exact Center Alignment) */
+.top-bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 10px 18px;
+  background: var(--md-surface);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--md-elevation-2);
+}
+
+/* macOS Window Control Buttons (Bigger Sizing & Spacing) */
+.mac-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  z-index: 2;
+}
+
+.mac-btn {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  transition: transform 0.15s ease, filter 0.15s ease, opacity 0.15s ease;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.mac-btn:hover {
+  transform: scale(1.22);
+  filter: brightness(1.2);
+}
+
+.mac-close {
+  background: #ff5f56;
+}
+
+.mac-minimize {
+  background: #ffbd2e;
+}
+
+.mac-maximize {
+  background: #27c93f;
+}
+
+/* Perfect 100% Centered Brand Tag (Grid Column 2) */
+.brand-badge {
+  position: static;
+  transform: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-code);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--atom-green);
+  padding: 7px 18px;
+  background: rgba(152, 195, 121, 0.12);
+  border: 1px solid rgba(152, 195, 121, 0.25);
+  border-radius: 14px;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1;
+  margin: 0 auto;
+  z-index: 2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.brand-badge:hover {
+  background: rgba(152, 195, 121, 0.22);
+  border-color: var(--atom-green);
+  color: var(--atom-green);
+  transform: translateY(-1px);
+}
+
+.brand-badge span {
+  display: inline-block;
+  line-height: 1;
+}
+
+.brand-badge svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.top-bar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  z-index: 2;
+}
+
+/* Interactive Buttons */
+.md-button-icon {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid var(--md-outline);
+  background: var(--md-surface);
+  color: var(--atom-fg-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.md-button-icon:hover {
+  background: var(--md-surface-variant);
+  border-color: var(--atom-blue);
+  color: var(--atom-blue);
+}
+
+/* Shared Card & Top Bar Base Styling, Uniform Drop Shadows & Mouseover Spotlight Animation */
+.profile-card,
+.quote-card,
+.player-card,
+.link-card,
+.top-bar {
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--md-elevation-2);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  --x: 50%;
+  --y: 50%;
+}
+
+.profile-card::before,
+.quote-card::before,
+.player-card::before,
+.link-card::before,
+.top-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(500px circle at var(--x) var(--y), var(--spotlight-glow), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.profile-card::before {
+  border-radius: 24px;
+}
+.quote-card::before,
+.player-card::before,
+.top-bar::before {
+  border-radius: 20px;
+}
+.link-card::before {
+  border-radius: 18px;
+}
+
+.profile-card:hover::before,
+.quote-card:hover::before,
+.player-card:hover::before,
+.link-card:hover::before,
+.top-bar:hover::before {
+  opacity: 1;
+}
+
+.profile-card:hover,
+.quote-card:hover,
+.player-card:hover,
+.link-card:hover,
+.top-bar:hover {
+  box-shadow: var(--md-elevation-3);
+  border-color: var(--atom-blue);
+}
+
+/* Ensure Card & Top Bar Content Sits Above Spotlight Layer */
+.profile-card > *,
+.quote-card > *,
+.player-card > *,
+.link-card > *,
+.top-bar > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Profile Card - Full Width Horizontal Layout (Overflow Visible for Steam Popover) */
+.profile-card {
+  width: 100%;
+  background: var(--md-surface);
+  border-radius: 24px;
+  border: 1px solid var(--glass-border);
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 28px;
+  text-align: left;
+  overflow: visible !important;
+  z-index: 100 !important;
+}
+
+.avatar-wrapper {
+  position: relative;
+  z-index: 100 !important;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.avatar-img {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--atom-purple);
+  box-shadow: var(--md-elevation-2);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.avatar-wrapper:hover .avatar-img {
+  border-color: var(--atom-blue);
+  transform: scale(1.05);
+}
+
+/* Steam Popover (Appears on Hover over Profile Avatar) */
+.steam-popover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translateY(8px) scale(0.95);
+  width: 350px;
+  background: var(--atom-bg-panel);
+  border: 1px solid var(--atom-border-bright);
+  border-radius: 20px;
+  padding: 14px;
+  box-shadow: var(--md-elevation-3);
+  z-index: 9999 !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.2, 0, 0, 1), transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.avatar-wrapper:hover .steam-popover,
+.steam-popover:hover,
+.avatar-wrapper.is-pinned .steam-popover {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(14px) scale(1);
+  z-index: 9999 !important;
+}
+
+.steam-popover-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 0 4px;
+}
+
+.steam-popover-header .steam-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.steam-popover iframe {
+  width: 100% !important;
+  height: 320px !important;
+  border: none !important;
+  border-radius: 14px !important;
+  display: block !important;
+}
+
+/* Middle Profile Info Stack */
+.profile-info-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-name {
+  font-family: var(--font-heading);
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--atom-fg-bright);
+  line-height: 1.1;
+}
+
+.profile-desc {
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: var(--atom-fg-main);
+  line-height: 1.4;
+}
+
+/* Vertically Centered Handle Tag on the Right */
+.handle-tag-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.profile-handle {
+  font-family: var(--font-code);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--atom-purple);
+  background: rgba(198, 120, 221, 0.14);
+  border: 1px solid rgba(198, 120, 221, 0.3);
+  padding: 8px 20px;
+  border-radius: 14px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Quote Card Component */
+.quote-card {
+  background: var(--md-surface);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quote-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quote-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.quote-icon-box {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  background: rgba(229, 192, 123, 0.12);
+  border: 1px solid rgba(229, 192, 123, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--atom-yellow);
+  box-shadow: var(--md-elevation-1);
+  flex-shrink: 0;
+}
+
+.quote-icon-box .quote-icon {
+  width: 38px;
+  height: 38px;
+  color: var(--atom-yellow);
+}
+
+.quote-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.quote-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--atom-fg-bright);
+  line-height: 1.1;
+}
+
+.quote-counter {
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--atom-yellow);
+  margin-top: 4px;
+  line-height: 1.1;
+}
+
+.quote-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.quote-text {
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--atom-fg-bright);
+  line-height: 1.45;
+  transition: opacity 0.2s ease;
+}
+
+.quote-text.fade-out {
+  opacity: 0;
+}
+
+/* Reverted Music Player Card (Full Width Horizontal Dimensions) */
+.player-card {
+  background: var(--md-surface);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.player-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.album-art {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--atom-blue), var(--atom-green));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--atom-bg-darker);
+  box-shadow: var(--md-elevation-1);
+  flex-shrink: 0;
+  animation: spinVinyl 14s linear infinite;
+  animation-play-state: paused;
+}
+
+.album-art .svg-icon {
+  width: 38px;
+  height: 38px;
+}
+
+.player-card.is-playing .album-art {
+  animation-play-state: running;
+}
+
+@keyframes spinVinyl {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.track-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.track-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--atom-fg-bright);
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-artist {
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--atom-cyan);
+  margin-top: 4px;
+  line-height: 1.1;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.embed-container {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: transparent;
+  border: none;
+}
+
+.embed-container iframe,
+#spotifyEmbed {
+  width: 100% !important;
+  height: 152px !important;
+  min-height: 152px !important;
+  border: none !important;
+  border-radius: 14px;
+  display: block !important;
+}
+
+/* Links Section Header */
+.links-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  padding: 0 4px;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--atom-fg-bright);
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 220px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 14px 8px 36px;
+  border-radius: 14px;
+  border: 1px solid var(--atom-border);
+  background: var(--md-surface);
+  color: var(--atom-fg-bright);
+  font-size: 0.85rem;
+  font-family: var(--font-family);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.search-input:focus {
+  border-color: var(--atom-blue);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--atom-fg-muted);
+  pointer-events: none;
+  font-size: 0.9rem;
+}
+
+/* LINKS GRID & ANIMATED BUTTON CARDS */
+.links-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.link-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--md-surface);
+  border-radius: 18px;
+  border: 1px solid var(--glass-border);
+  text-decoration: none;
+  color: var(--atom-fg-main);
+  box-shadow: var(--md-elevation-1);
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+
+  --x: 50%;
+  --y: 50%;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.link-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(500px circle at var(--x) var(--y), var(--spotlight-glow), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.link-card:hover::before {
+  opacity: 1;
+}
+
+.link-card:hover {
+  border-color: var(--atom-blue);
+  background: var(--atom-bg-card-hover);
+}
+
+.link-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 2;
+  min-width: 0;
+}
+
+.icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: transform var(--transition-fast);
+}
+
+.icon-box img,
+.icon-mask {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  object-fit: contain;
+}
+
+.link-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.link-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--atom-fg-bright);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link-subtitle {
+  font-size: 0.82rem;
+  color: var(--atom-fg-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+}
+
+.badge-tag {
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 10px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.copy-link-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--atom-fg-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.copy-link-btn:hover {
+  background: rgba(97, 175, 239, 0.15);
+  color: var(--atom-blue);
+}
+
+.open-icon {
+  color: var(--atom-fg-muted);
+  font-size: 1.1rem;
+  transition: color var(--transition-fast);
+}
+
+.link-card:hover .open-icon {
+  color: var(--atom-blue);
+}
+
+/* Footer Section */
+.footer-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.footer-symbol {
+  font-family: var(--font-code);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--atom-purple);
+  background: var(--md-surface);
+  padding: 8px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--md-elevation-1);
+}
+
+.footer-text {
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+  color: var(--atom-fg-muted);
+}
+
+/* Toast Snackbar */
+.snackbar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--atom-bg-card-hover);
+  color: var(--atom-fg-bright);
+  border: 1px solid var(--atom-border-bright);
+  padding: 12px 24px;
+  border-radius: 14px;
+  font-family: var(--font-code);
+  font-size: 0.88rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--md-elevation-3);
+  z-index: 1000;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.snackbar.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.svg-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+@media (max-width: 580px) {
+  body {
+    padding: 14px 10px 40px 10px;
+  }
+  
+  /* Top Bar Mobile Optimization (No Overlap & Centered Badge) */
+  .top-bar {
+    padding: 8px 12px;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 6px;
+  }
+
+  .mac-controls {
+    gap: 6px;
+    justify-content: flex-start;
+  }
+
+  .mac-btn {
+    width: 14px;
+    height: 14px;
+  }
+
+  .brand-badge {
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    gap: 5px;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand-badge svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .top-bar-actions {
+    gap: 6px;
+    justify-content: flex-end;
+  }
+
+  .md-button-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+  }
+
+  .md-button-icon .svg-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Profile Card Mobile Centering & High Stacking Priority */
+  .profile-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 16px;
+    gap: 14px;
+    align-items: center;
+    overflow: visible !important;
+    z-index: 100 !important;
+  }
+
+  .avatar-wrapper {
+    position: relative;
+    z-index: 100 !important;
+  }
+  
+  .profile-info-stack {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .profile-name {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .profile-desc {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .handle-tag-wrapper {
+    margin-left: 0;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+  }
+
+  .profile-handle {
+    font-size: 1.1rem;
+    padding: 6px 16px;
+  }
+
+  .avatar-img {
+    width: 92px;
+    height: 92px;
+  }
+
+  .steam-popover {
+    left: 50%;
+    width: 310px;
+    z-index: 9999 !important;
+    transform: translateX(-50%) translateY(8px) scale(0.95);
+  }
+
+  .avatar-wrapper:hover .steam-popover,
+  .steam-popover:hover,
+  .avatar-wrapper.is-pinned .steam-popover {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(14px) scale(1);
+    z-index: 9999 !important;
+  }
+
+  /* Quote Generator & Spotify Player Mobile Optimization */
+  .quote-card,
+  .player-card {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .quote-header-left,
+  .player-main {
+    gap: 10px;
+  }
+
+  .quote-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+  }
+
+  .album-art {
+    width: 48px;
+    height: 48px;
+    border-radius: 50% !important;
+  }
+
+  .quote-icon-box .quote-icon,
+  .album-art .svg-icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .quote-info,
+  .track-info {
+    margin-top: 0;
+  }
+
+  .quote-title,
+  .track-title {
+    font-size: 1.02rem;
+  }
+
+  .quote-counter,
+  .track-artist {
+    font-size: 0.75rem;
+    margin-top: 2px;
+  }
+
+  .quote-actions,
+  .player-controls {
+    gap: 4px;
+  }
+
+  .quote-actions .md-button-icon,
+  .player-controls .md-button-icon {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .quote-actions .md-button-icon .svg-icon,
+  .player-controls .md-button-icon .svg-icon {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .quote-text {
+    font-size: 0.95rem;
+  }
+
+  .link-card {
+    padding: 14px 16px;
+  }
+
+  .badge-tag {
+    display: none;
+  }
+
+  .search-input-wrapper {
+    max-width: 140px;
+  }
+}
