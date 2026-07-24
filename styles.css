@@ -115,27 +115,18 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-html {
+html, body {
   background-color: var(--atom-bg-darker);
-  background: var(--bg-gradient-dark);
-  background-size: 200% 200%;
-  animation: gradientShift 20s ease infinite;
   min-height: 100%;
   min-height: 100dvh;
+  min-height: -webkit-fill-available;
   -webkit-text-size-adjust: 100%;
-  transition: background 0.5s ease;
-}
-
-html[data-theme="light"] {
-  background: var(--bg-gradient-light);
-  background-size: 200% 200%;
+  transition: background-color 0.5s ease;
 }
 
 body {
   font-family: var(--font-family);
   color: var(--atom-fg-main);
-  min-height: 100%;
-  min-height: 100dvh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -145,8 +136,29 @@ body {
   padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
   padding-left: calc(16px + env(safe-area-inset-left, 0px));
   overflow-x: hidden;
-  background: transparent;
+  position: relative;
   transition: color 0.3s ease;
+}
+
+/* Fixed viewport backdrop container to prevent iOS Safari overscroll & dynamic UI whitespace */
+body::before {
+  content: "";
+  position: fixed;
+  top: -20vh;
+  bottom: -20vh;
+  left: -20vw;
+  right: -20vw;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--bg-gradient-dark);
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease infinite;
+  transition: background 0.5s ease;
+}
+
+[data-theme="light"] body::before {
+  background: var(--bg-gradient-light);
+  background-size: 200% 200%;
 }
 
 @keyframes gradientShift {
