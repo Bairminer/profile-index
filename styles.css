@@ -62,18 +62,17 @@
   --transition-fast: 0.15s ease;
   --transition-normal: 0.25s ease;
 
-  /* Atom One Dark Pro Darker Dual Gradients - Deep Ambient Mesh Background */
-  --bg-gradient-dark: radial-gradient(circle at 15% 15%, rgba(97, 175, 239, 0.16) 0%, transparent 50%),
-                      radial-gradient(circle at 85% 20%, rgba(198, 120, 221, 0.16) 0%, transparent 50%),
-                      radial-gradient(circle at 80% 80%, rgba(86, 182, 194, 0.14) 0%, transparent 50%),
-                      radial-gradient(circle at 20% 80%, rgba(152, 195, 121, 0.12) 0%, transparent 50%),
+  /* Atom One Dark Pro Darker Dual Gradients - Deep Background */
+  --bg-gradient-dark: radial-gradient(at 0% 0%, #1a1d24 0px, transparent 50%),
+                      radial-gradient(at 100% 0%, #101216 0px, transparent 50%),
+                      radial-gradient(at 100% 100%, #20242d 0px, transparent 50%),
+                      radial-gradient(at 0% 100%, #14161b 0px, transparent 50%),
                       linear-gradient(135deg, #121418 0%, #171920 100%);
 
   /* Atom One Light Mode Alternative - Richer Contrast Background */
-  --bg-gradient-light: radial-gradient(circle at 15% 15%, rgba(56, 114, 224, 0.20) 0%, transparent 50%),
-                       radial-gradient(circle at 85% 20%, rgba(160, 80, 220, 0.18) 0%, transparent 50%),
-                       radial-gradient(circle at 80% 80%, rgba(40, 160, 180, 0.18) 0%, transparent 50%),
-                       radial-gradient(circle at 20% 80%, rgba(80, 160, 90, 0.16) 0%, transparent 50%),
+  --bg-gradient-light: radial-gradient(at 0% 0%, #dcdfe6 0px, transparent 50%),
+                       radial-gradient(at 100% 0%, #d0d4de 0px, transparent 50%),
+                       radial-gradient(at 100% 100%, #e4e7ef 0px, transparent 50%),
                        linear-gradient(135deg, #e8eaef 0%, #d4d8e2 100%);
 }
 
@@ -116,7 +115,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+html {
   background-color: var(--atom-bg-darker);
   min-height: 100%;
   min-height: 100dvh;
@@ -128,6 +127,9 @@ html, body {
 body {
   font-family: var(--font-family);
   color: var(--atom-fg-main);
+  min-height: 100%;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -137,45 +139,21 @@ body {
   padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
   padding-left: calc(16px + env(safe-area-inset-left, 0px));
   overflow-x: hidden;
-  position: relative;
-  transition: color 0.3s ease;
+  background-image: var(--bg-gradient-dark);
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease infinite;
+  transition: background-image 0.5s ease, color 0.3s ease;
 }
 
-/* Fixed viewport backdrop container to prevent iOS Safari overscroll & dynamic UI whitespace */
-body::before {
-  content: "";
-  position: fixed;
-  top: -40vh;
-  left: -40vw;
-  width: 180vw;
-  height: 180vh;
-  z-index: -1;
-  pointer-events: none;
-  background: var(--bg-gradient-dark);
-  background-size: 100% 100%;
-  animation: gradientShift 24s ease-in-out infinite alternate;
-  will-change: transform;
-  transform-origin: center center;
-  transition: background 0.5s ease;
-}
-
-[data-theme="light"] body::before {
-  background: var(--bg-gradient-light);
+[data-theme="light"] body {
+  background-image: var(--bg-gradient-light);
+  background-size: 200% 200%;
 }
 
 @keyframes gradientShift {
-  0% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-  }
-  33% {
-    transform: translate(5vw, -4vh) scale(1.08) rotate(4deg);
-  }
-  66% {
-    transform: translate(-4vw, 5vh) scale(1.05) rotate(-4deg);
-  }
-  100% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-  }
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
 }
 
 /* App Container */
