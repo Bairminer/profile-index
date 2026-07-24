@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("theme", currentTheme);
     updateThemeIcon();
     updateThemeColorMeta();
-    showToast(`Switched to Atom One ${currentTheme === "dark" ? "Dark Pro Darker" : "Light"} theme`);
+    showToast(`Switched to Atom One ${currentTheme === "dark" ? "Dark" : "Light"} theme`);
   }
 
   function updateThemeColorMeta() {
