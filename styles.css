@@ -117,11 +117,21 @@
 
 html {
   background-color: var(--atom-bg-darker);
+  background-image: var(--bg-gradient-dark);
+  background-size: 200% 200%;
+  background-attachment: fixed;
+  animation: gradientShift 20s ease infinite;
   min-height: 100%;
   min-height: 100dvh;
   min-height: -webkit-fill-available;
   -webkit-text-size-adjust: 100%;
-  transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease, background-image 0.5s ease;
+}
+
+html[data-theme="light"] {
+  background-image: var(--bg-gradient-light);
+  background-size: 200% 200%;
+  background-attachment: fixed;
 }
 
 body {
@@ -139,15 +149,8 @@ body {
   padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
   padding-left: calc(16px + env(safe-area-inset-left, 0px));
   overflow-x: hidden;
-  background-image: var(--bg-gradient-dark);
-  background-size: 200% 200%;
-  animation: gradientShift 20s ease infinite;
-  transition: background-image 0.5s ease, color 0.3s ease;
-}
-
-[data-theme="light"] body {
-  background-image: var(--bg-gradient-light);
-  background-size: 200% 200%;
+  background: transparent;
+  transition: color 0.3s ease;
 }
 
 @keyframes gradientShift {
